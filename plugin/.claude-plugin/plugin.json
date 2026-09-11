@@ -1,0 +1,15 @@
+{
+  "name": "rapp-brainstem",
+  "version": "0.1.0",
+  "description": "Use your RAPP Brainstem through your GitHub Copilot account.",
+  "author": {
+    "name": "RAPP",
+    "url": "https://github.com/kody-w"
+  },
+  "homepage": "https://github.com/kody-w/rapp-brainstem-plugin",
+  "repository": "https://github.com/kody-w/rapp-brainstem-plugin.git",
+  "license": "MIT",
+  "keywords": ["rapp", "brainstem", "github-copilot", "mcp", "agents"],
+  "mcpServers": "./.mcp.json",
+  "skills": "./skills/"
+}

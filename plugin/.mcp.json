@@ -1,0 +1,8 @@
+{
+  "mcpServers": {
+    "rapp-brainstem": {
+      "type": "http",
+      "url": "https://REPLACE-WITH-AZURE-ENDPOINT/mcp"
+    }
+  }
+}
