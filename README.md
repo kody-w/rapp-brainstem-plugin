@@ -84,6 +84,22 @@ Refresh endpoint:       https://github.com/login/oauth/access_token
 Use **Any Microsoft 365 organization** and **Any Teams app** in the Microsoft
 OAuth client registration.
 
+### One-click GitHub App registration
+
+GitHub's manifest flow can create the correctly configured GitHub App without
+manually copying settings into Developer Settings. Expose the local callback
+through a temporary HTTPS tunnel, then run:
+
+```bash
+python scripts/github_app_manifest_server.py \
+  --public-url https://YOUR-TEMPORARY-TUNNEL
+```
+
+Open the printed URL and approve creation. The generated credentials are stored
+at `~/.brainstem/github-app.json` with mode `0600`; secrets are never displayed
+in the browser or written to the repository. Delete the file after registering
+the OAuth client in Microsoft.
+
 ## Azure deployment
 
 Authenticate to the intended personal Azure subscription, then:
