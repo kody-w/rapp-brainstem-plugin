@@ -1,0 +1,49 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/teams/v1.28/MicrosoftTeams.schema.json",
+  "manifestVersion": "1.28",
+  "version": "0.1.0",
+  "id": "a75e8bad-121d-51ec-9269-1b3f2c4cfdee",
+  "developer": {
+    "name": "RAPP",
+    "websiteUrl": "https://github.com/kody-w/rapp-brainstem-plugin",
+    "privacyUrl": "https://github.com/kody-w/rapp-brainstem-plugin/blob/main/PRIVACY.md",
+    "termsOfUseUrl": "https://github.com/kody-w/rapp-brainstem-plugin/blob/main/TERMS.md"
+  },
+  "name": {
+    "short": "RAPP Brainstem",
+    "full": "RAPP Brainstem for Microsoft Copilot Cowork"
+  },
+  "description": {
+    "short": "Give me my Brainstem.",
+    "full": "Use your RAPP Brainstem through your own GitHub Copilot account."
+  },
+  "icons": {
+    "color": "color.png",
+    "outline": "outline.png"
+  },
+  "accentColor": "#111827",
+  "agentSkills": [
+    {
+      "folder": "./skills/brainstem"
+    }
+  ],
+  "agentConnectors": [
+    {
+      "id": "rapp-brainstem",
+      "displayName": "RAPP Brainstem",
+      "description": "Connect to the user's RAPP Brainstem.",
+      "toolSource": {
+        "remoteMcpServer": {
+          "mcpServerUrl": "__MCP_SERVER_URL__",
+          "mcpToolDescription": {
+            "file": "./tools/brainstem-tools.json"
+          },
+          "authorization": {
+            "type": "OAuthPluginVault",
+            "referenceId": "__OAUTH_REFERENCE_ID__"
+          }
+        }
+      }
+    }
+  ]
+}

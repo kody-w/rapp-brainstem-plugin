@@ -1,0 +1,32 @@
+{
+  "tools": [
+    {
+      "name": "brainstem",
+      "description": "Ask the authenticated user's RAPP Brainstem to perform a task.",
+      "inputSchema": {
+        "type": "object",
+        "properties": {
+          "request": {
+            "type": "string",
+            "description": "The task or question for the user's Brainstem."
+          },
+          "sessionId": {
+            "type": "string",
+            "description": "Optional Brainstem conversation session to continue."
+          }
+        },
+        "required": ["request"],
+        "additionalProperties": false
+      }
+    },
+    {
+      "name": "brainstem_status",
+      "description": "Check the authenticated user's Brainstem and GitHub connection.",
+      "inputSchema": {
+        "type": "object",
+        "properties": {},
+        "additionalProperties": false
+      }
+    }
+  ]
+}
