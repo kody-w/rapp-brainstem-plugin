@@ -9,7 +9,10 @@ PROTOCOL_VERSION = "2025-06-18"
 TOOLS = [
     {
         "name": "brainstem",
-        "description": "Ask the authenticated user's RAPP Brainstem to perform a task.",
+        "description": (
+            "Use the authenticated user's Brainstem for persistent memory, Hacker News, "
+            "RAR agent discovery/install, and installed capabilities."
+        ),
         "inputSchema": {
             "type": "object",
             "properties": {
@@ -28,7 +31,10 @@ TOOLS = [
     },
     {
         "name": "brainstem_status",
-        "description": "Check the authenticated user's Brainstem and GitHub connection.",
+        "description": (
+            "Check the user's GitHub connection, loaded Brainstem capabilities, "
+            "and agent load errors."
+        ),
         "inputSchema": {
             "type": "object",
             "properties": {},

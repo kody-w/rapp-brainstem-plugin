@@ -13,6 +13,7 @@ authors = [{ name = "Kody Wildfeuer" }]
 dependencies = [
   "github-copilot-sdk==1.0.11",
   "httpx>=0.28,<1",
+  "jsonschema>=4.25,<5",
   "starlette>=0.48,<1",
   "uvicorn[standard]>=0.35,<1",
 ]
@@ -20,7 +21,6 @@ dependencies = [
 [project.optional-dependencies]
 dev = [
   "mcp==2.1.1",
-  "jsonschema>=4.25,<5",
   "pytest>=8.4,<9",
   "pytest-asyncio>=1.1,<2",
   "ruff>=0.12,<1",
@@ -30,7 +30,10 @@ dev = [
 rapp-brainstem-gateway = "rapp_brainstem_gateway.app:main"
 
 [tool.hatch.build.targets.wheel]
-packages = ["src/rapp_brainstem_gateway"]
+packages = ["src/rapp_brainstem_gateway", "agents"]
+
+[tool.hatch.build.targets.wheel.force-include]
+"soul.md" = "rapp_brainstem_gateway/soul.md"
 
 [tool.pytest.ini_options]
 asyncio_mode = "auto"
@@ -40,6 +43,13 @@ testpaths = ["tests"]
 [tool.ruff]
 line-length = 100
 target-version = "py311"
+# These files are verbatim, hash-pinned RAR packages, checked by sync_rar_agents.py.
+extend-exclude = [
+  "agents/basic_agent.py",
+  "agents/context_memory_agent.py",
+  "agents/manage_memory_agent.py",
+  "agents/hacker_news_agent.py",
+]
 
 [tool.ruff.lint]
 select = ["E", "F", "I", "UP", "B", "SIM"]

@@ -1,0 +1,36 @@
+{
+  "schema": "brainstem-rar-defaults/1",
+  "repository": "kody-w/RAR",
+  "revision": "d4faf183428900353e21d29be8091dc75f7b3c63",
+  "license": "MIT",
+  "agents": [
+    {
+      "name": "@rapp/basic_agent",
+      "version": "1.0.1",
+      "source": "agents/@rapp/basic_agent.py",
+      "file": "basic_agent.py",
+      "sha256": "ce51cc4afe312a24a8f2b0034663d415b94660a88b5aeb328f0898a562df4fc5"
+    },
+    {
+      "name": "@kody-w/context_memory_agent",
+      "version": "1.0.1",
+      "source": "agents/@kody-w/context_memory_agent.py",
+      "file": "context_memory_agent.py",
+      "sha256": "611d0957274b1f584acd9f763bb789b616eca4c1e4297665064bfeef9ed37e7a"
+    },
+    {
+      "name": "@kody-w/manage_memory_agent",
+      "version": "1.0.0",
+      "source": "agents/@kody-w/manage_memory_agent.py",
+      "file": "manage_memory_agent.py",
+      "sha256": "a3866eaef31b35e1a7b9bb17755d42950e3b62ab4c04b051f3f0e27808acb435"
+    },
+    {
+      "name": "@rapp/hacker_news",
+      "version": "1.0.0",
+      "source": "agents/@rapp/hacker_news_agent.py",
+      "file": "hacker_news_agent.py",
+      "sha256": "51dd9c04dd7eb5a0701c5008a3797945b6188eb39d7de93b2a0467e03e1049a2"
+    }
+  ]
+}

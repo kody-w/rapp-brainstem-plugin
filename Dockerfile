@@ -8,12 +8,10 @@ ENV PYTHONDONTWRITEBYTECODE=1 \
 
 WORKDIR /app
 
-COPY pyproject.toml README.md LICENSE ./
+COPY pyproject.toml README.md LICENSE soul.md ./
 COPY src ./src
-RUN pip install --no-cache-dir . && python -m copilot download-runtime
-
 COPY agents ./agents
-COPY soul.md ./soul.md
+RUN pip install --no-cache-dir . && python -m copilot download-runtime
 
 RUN useradd --create-home --uid 10001 brainstem \
     && mkdir -p /data/copilot-home \

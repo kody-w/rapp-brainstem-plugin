@@ -3,7 +3,6 @@ from __future__ import annotations
 import asyncio
 import hashlib
 import hmac
-import inspect
 import json
 import re
 import secrets
@@ -23,6 +22,7 @@ class BrainstemResult:
     response: str
     session_id: str
     loaded_agent_count: int
+    agent_errors: tuple[str, ...] = ()
 
 
 class Runtime(Protocol):
@@ -64,9 +64,7 @@ class CopilotRuntime:
                 loaded_agent: LoadedAgent = agent,
             ) -> ToolResult:
                 try:
-                    value = loaded_agent.instance.perform(**invocation.arguments)
-                    if inspect.isawaitable(value):
-                        value = await value
+                    value = await loaded_agent.invoke(invocation.arguments)
                     text = value if isinstance(value, str) else json.dumps(value, default=str)
                     return ToolResult(
                         text_result_for_llm=text,
@@ -139,15 +137,22 @@ class BrainstemService:
     ) -> None:
         self._settings = settings
         self._runtime = runtime or CopilotRuntime(settings)
-        self._registry = registry or AgentRegistry(settings.agents_path)
+        self._registry = registry or AgentRegistry(
+            settings.agents_path, state_path=settings.state_path, include_defaults=True
+        )
         self._session_locks: dict[str, asyncio.Lock] = {}
 
     def status(self, identity: GitHubIdentity) -> dict[str, Any]:
+        catalog = self._registry.catalog(user_id=identity.id)
         return {
             "connected": True,
             "githubLogin": identity.login,
-            "brainstemReady": self._settings.soul_path.exists(),
-            "loadedAgentCount": len(self._registry.load()),
+            "brainstemReady": self._settings.soul_path.exists() and not catalog.errors,
+            "loadedAgentCount": len(catalog.agents),
+            "agents": [
+                {"name": agent.name, "description": agent.description} for agent in catalog.agents
+            ],
+            "agentErrors": catalog.errors,
         }
 
     async def chat(
@@ -167,7 +172,10 @@ class BrainstemService:
         public_session_id = requested_session_id or f"brainstem-{secrets.token_hex(12)}"
         session_id = self._session_id(identity.id, public_session_id)
         soul = self._read_soul()
-        agents = self._registry.load()
+        catalog = self._registry.catalog(user_id=identity.id)
+        agents = catalog.agents
+        if catalog.errors:
+            soul += "\nUnavailable agents (report these failures):\n" + "\n".join(catalog.errors)
         lock = self._session_locks.setdefault(session_id, asyncio.Lock())
         try:
             async with lock:
@@ -191,6 +199,7 @@ class BrainstemService:
             response=response,
             session_id=public_session_id,
             loaded_agent_count=len(agents),
+            agent_errors=tuple(catalog.errors),
         )
 
     def _read_soul(self) -> str:

@@ -20,13 +20,22 @@ class Settings:
     @classmethod
     def from_env(cls) -> Settings:
         root = Path(os.getenv("RAPP_ROOT", Path.cwd())).resolve()
+        default_soul = root / "soul.md"
+        if not default_soul.is_file():
+            for candidate in (
+                Path(__file__).with_name("soul.md"),
+                Path(__file__).resolve().parents[2] / "soul.md",
+            ):
+                if candidate.is_file():
+                    default_soul = candidate
+                    break
         session_secret = os.getenv("RAPP_SESSION_SECRET", "").strip()
         if not session_secret:
             session_secret = "development-only-change-me"
         return cls(
             root=root,
             agents_path=Path(os.getenv("RAPP_AGENTS_PATH", root / "agents")).resolve(),
-            soul_path=Path(os.getenv("RAPP_SOUL_PATH", root / "soul.md")).resolve(),
+            soul_path=Path(os.getenv("RAPP_SOUL_PATH", default_soul)).resolve(),
             state_path=Path(os.getenv("RAPP_STATE_PATH", root / "copilot-home")).resolve(),
             github_api_url=os.getenv("GITHUB_API_URL", "https://api.github.com").rstrip("/"),
             github_api_version=os.getenv("GITHUB_API_VERSION", "2022-11-28"),
