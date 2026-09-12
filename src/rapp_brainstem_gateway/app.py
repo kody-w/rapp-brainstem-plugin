@@ -92,6 +92,7 @@ def create_app(
                     "response": result_value.response,
                     "sessionId": result_value.session_id,
                     "loadedAgentCount": result_value.loaded_agent_count,
+                    "agentErrors": list(result_value.agent_errors),
                 }
 
             return jsonrpc_result(

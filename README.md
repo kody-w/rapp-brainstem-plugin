@@ -18,10 +18,86 @@ Cowork
   -> RAPP soul + drop-in agents
 ```
 
+## Out-of-box agents
+
+Brainstem starts with the standard RAR agents, not a greeting demo:
+
+| File | Capability |
+| --- | --- |
+| `agents/basic_agent.py` | The actual shared `BasicAgent` class every agent inherits from; not a callable tool. |
+| `agents/context_memory_agent.py` | `ContextMemory`: recall saved facts, preferences, insights, and tasks. |
+| `agents/manage_memory_agent.py` | `ManageMemory`: save memories across conversations and restarts. |
+| `agents/hacker_news_agent.py` | `HackerNews`: fetch current top stories and source links without an API key. |
+| `agents/rar_remote_agent.py` | `RARRemoteAgent`: browse, search, inspect, list, and install RAR packages. |
+
+The first four files are unmodified MIT-licensed packages from
+[RAR](https://github.com/kody-w/RAR), pinned by revision and published SHA-256 in
+`agents/defaults.lock.json`. The RAR client is a small hosted adapter for the
+registry's public static API, not the desktop client's ambient-credential and
+filesystem setup flow. Both `from agents.basic_agent import BasicAgent` and
+`from basic_agent import BasicAgent` resolve to the same class.
+
+Try these through the existing `brainstem` tool:
+
+- "Remember that this project's goal is a useful daily project brief."
+- "What do you remember about this project?"
+- "Show me the top five Hacker News stories."
+- "Search RAR for project summaries."
+- "Install the RAR agent @publisher/exact_name." Use a name returned by search.
+
+`brainstem_status` lists the actual loaded capabilities and any load errors.
+Memory is bound to the authenticated GitHub user, not a model-supplied user ID
+or conversation ID. The original agents use a host-supplied
+`utils.storage_factory` compatibility layer backed by transactional SQLite
+storage under `RAPP_STATE_PATH/<github-id>/agent-storage.sqlite3`. Concurrent
+memory writes are serialized; signing out or changing conversations does not
+erase memories.
+
+### Adding agents from RAR
+
+RAR discovery is public and needs no extra token. Search terms are matched
+locally against its catalog; the gateway does not forward GitHub credentials
+to RAR or Hacker News. Installation requires an explicit user request
+(`action="install"`, `agent_name="@publisher/name"`, `confirm=true`).
+
+Downloads must match the published `sha256-lf-v1` hash and manifest and pass
+an import/schema check before admission. Source and its receipt are installed
+together under `RAPP_STATE_PATH/<github-id>/agents/`, never the shared default
+directory. The next Brainstem request hot-loads that user's new tools without
+a server restart. Every subsequent load rechecks the source hash. A broken or
+modified package is disabled with an explicit `agentErrors` entry; the defaults
+remain usable.
+
+This client supports public, standalone `BasicAgent` Python packages. Private
+stubs and packages requiring other RAR packages are rejected explicitly. Python
+dependencies must be provided by the gateway operator; agents never trigger an
+automatic `pip install` through this client. Existing versions and default
+capabilities are not silently overwritten.
+
+**Trusted-code deployment:** installing a RAR agent executes its Python code.
+This gateway follows the personal, trusted-registry model, not a Python sandbox.
+Per-user storage prevents accidental state mixing but cannot contain malicious
+Python. Only expose installation and agent execution to trusted users; do not
+offer arbitrary registry installs to mutually untrusted tenants.
+
+### Maintaining the defaults
+
+Verify the vendored files offline:
+
+```bash
+python scripts/sync_rar_agents.py --check
+```
+
+To adopt reviewed upstream versions, update the revision, versions, and hashes
+in `agents/defaults.lock.json`, then run `python scripts/sync_rar_agents.py`.
+The script verifies every download before replacing any file. Do not hand-edit
+the locked source files; host-specific behavior belongs in the gateway's
+compatibility layer.
+
 ## Repository layout
 
 - `src/rapp_brainstem_gateway/` - authenticated Streamable HTTP MCP gateway.
-- `agents/` - hot-loaded RAPP `*_agent.py` files.
+- `agents/` - bundled RAR defaults, their source lock, and the hosted RAR adapter.
 - `soul.md` - Brainstem system instructions.
 - `plugin/` - portable Claude/OpenPlugin source package.
 - `cowork/appPackage/` - Microsoft 365 Cowork package source.
@@ -31,6 +107,11 @@ Cowork
 ## Local development
 
 Python 3.12 is recommended.
+
+The Python distribution includes the default agents, their lock file, and the
+default soul, so it also works outside a source checkout. A workspace `soul.md`
+takes precedence; an explicit `RAPP_SOUL_PATH` is always honored, including
+reporting an error if that configured file is missing.
 
 ```bash
 python3 -m venv .venv
@@ -121,6 +202,9 @@ configures a service-wide GitHub token.
 - Copilot SDK logged-in-user fallback is disabled.
 - The runtime receives only the authenticated request user's token.
 - Public MCP calls are capped below Cowork's 30-second deadline.
+- RAR source hashes are checked before installation and every subsequent load.
+- Memory context and registry install paths are selected by authenticated identity.
+- Installed Python is trusted operator code, not a tenant security boundary.
 
 ## License
 
