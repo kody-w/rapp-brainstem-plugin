@@ -27,6 +27,351 @@
         "properties": {},
         "additionalProperties": false
       }
+    },
+    {
+      "name": "rapp_work_status",
+      "description": "Read sanitized RAPP Work readiness without disclosing roots.",
+      "inputSchema": {
+        "type": "object",
+        "properties": {
+          "root": {
+            "type": "string",
+            "minLength": 1,
+            "maxLength": 4096,
+            "description": "Workspace root. Relative paths resolve beneath the first configured RAPP_WORK_ROOTS entry."
+          },
+          "offline": {
+            "type": "boolean",
+            "const": true,
+            "default": true,
+            "description": "This integration permits only the canonical offline execution path."
+          }
+        },
+        "additionalProperties": false
+      }
+    },
+    {
+      "name": "rapp_work_verify",
+      "description": "Verify a workspace through the canonical RAPP Work SDK.",
+      "inputSchema": {
+        "type": "object",
+        "properties": {
+          "root": {
+            "type": "string",
+            "minLength": 1,
+            "maxLength": 4096,
+            "description": "Workspace root. Relative paths resolve beneath the first configured RAPP_WORK_ROOTS entry."
+          },
+          "offline": {
+            "type": "boolean",
+            "const": true,
+            "default": true,
+            "description": "This integration permits only the canonical offline execution path."
+          }
+        },
+        "additionalProperties": false
+      }
+    },
+    {
+      "name": "rapp_work_discover",
+      "description": "Discover RAPP Work resources through the canonical SDK.",
+      "inputSchema": {
+        "type": "object",
+        "properties": {
+          "roots": {
+            "type": "array",
+            "items": {
+              "type": "string",
+              "minLength": 1,
+              "maxLength": 4096,
+              "description": "Workspace root. Relative paths resolve beneath the first configured RAPP_WORK_ROOTS entry."
+            },
+            "minItems": 1,
+            "maxItems": 32,
+            "description": "One to thirty-two allowlisted roots for inert discovery."
+          },
+          "maxEntries": {
+            "type": "integer",
+            "minimum": 1,
+            "maximum": 10000,
+            "default": 10000,
+            "description": "Maximum filesystem entries inspected across the roots."
+          },
+          "offline": {
+            "type": "boolean",
+            "const": true,
+            "default": true,
+            "description": "This integration permits only the canonical offline execution path."
+          }
+        },
+        "required": [
+          "roots"
+        ],
+        "additionalProperties": false
+      }
+    },
+    {
+      "name": "rapp_work_scaffold",
+      "description": "Plan or explicitly apply canonical RAPP Work scaffolding.",
+      "inputSchema": {
+        "type": "object",
+        "properties": {
+          "root": {
+            "type": "string",
+            "minLength": 1,
+            "maxLength": 4096,
+            "description": "Workspace root. Relative paths resolve beneath the first configured RAPP_WORK_ROOTS entry."
+          },
+          "kind": {
+            "type": "string",
+            "enum": [
+              "workspace",
+              "organization"
+            ],
+            "description": "Canonical workspace kind to create."
+          },
+          "ownerLabel": {
+            "type": "string",
+            "minLength": 1,
+            "maxLength": 39,
+            "pattern": "^[a-z0-9]+(?:-[a-z0-9]+)*$",
+            "description": "Lowercase RAPP owner label."
+          },
+          "slug": {
+            "type": "string",
+            "minLength": 1,
+            "maxLength": 100,
+            "pattern": "^[a-z0-9]+(?:-[a-z0-9]+)*$",
+            "description": "Lowercase workspace or organization slug."
+          },
+          "worldId": {
+            "type": "string",
+            "minLength": 1,
+            "maxLength": 64,
+            "pattern": "^[a-z0-9]+(?:-[a-z0-9]+)*$",
+            "description": "Immutable lowercase world boundary identifier."
+          },
+          "mode": {
+            "type": "string",
+            "enum": [
+              "solo",
+              "hive"
+            ],
+            "default": "solo",
+            "description": "Workspace operating mode."
+          },
+          "offline": {
+            "type": "boolean",
+            "const": true,
+            "default": true,
+            "description": "This integration permits only the canonical offline execution path."
+          },
+          "apply": {
+            "type": "boolean",
+            "default": false,
+            "description": "Apply an already reviewed plan. Defaults to dry-run."
+          },
+          "planDigest": {
+            "type": "string",
+            "pattern": "^[0-9a-f]{64}$",
+            "description": "Exact digest returned by the matching dry-run plan."
+          }
+        },
+        "required": [
+          "root",
+          "kind",
+          "ownerLabel",
+          "slug",
+          "worldId",
+          "mode"
+        ],
+        "allOf": [
+          {
+            "if": {
+              "properties": {
+                "apply": {
+                  "const": true
+                }
+              },
+              "required": [
+                "apply"
+              ]
+            },
+            "then": {
+              "required": [
+                "planDigest"
+              ]
+            }
+          },
+          {
+            "if": {
+              "required": [
+                "planDigest"
+              ]
+            },
+            "then": {
+              "properties": {
+                "apply": {
+                  "const": true
+                }
+              },
+              "required": [
+                "apply"
+              ]
+            }
+          }
+        ],
+        "additionalProperties": false
+      }
+    },
+    {
+      "name": "rapp_work_update",
+      "description": "Plan or explicitly apply a canonical RAPP Work update.",
+      "inputSchema": {
+        "type": "object",
+        "properties": {
+          "root": {
+            "type": "string",
+            "minLength": 1,
+            "maxLength": 4096,
+            "description": "Workspace root. Relative paths resolve beneath the first configured RAPP_WORK_ROOTS entry."
+          },
+          "offline": {
+            "type": "boolean",
+            "const": true,
+            "default": true,
+            "description": "This integration permits only the canonical offline execution path."
+          },
+          "apply": {
+            "type": "boolean",
+            "default": false,
+            "description": "Apply an already reviewed plan. Defaults to dry-run."
+          },
+          "planDigest": {
+            "type": "string",
+            "pattern": "^[0-9a-f]{64}$",
+            "description": "Exact digest returned by the matching dry-run plan."
+          }
+        },
+        "required": [
+          "root"
+        ],
+        "allOf": [
+          {
+            "if": {
+              "properties": {
+                "apply": {
+                  "const": true
+                }
+              },
+              "required": [
+                "apply"
+              ]
+            },
+            "then": {
+              "required": [
+                "planDigest"
+              ]
+            }
+          },
+          {
+            "if": {
+              "required": [
+                "planDigest"
+              ]
+            },
+            "then": {
+              "properties": {
+                "apply": {
+                  "const": true
+                }
+              },
+              "required": [
+                "apply"
+              ]
+            }
+          }
+        ],
+        "additionalProperties": false
+      }
+    },
+    {
+      "name": "rapp_work_migrate",
+      "description": "Plan or explicitly apply a canonical RAPP Work migration.",
+      "inputSchema": {
+        "type": "object",
+        "properties": {
+          "source": {
+            "type": "string",
+            "minLength": 1,
+            "maxLength": 4096,
+            "description": "Existing migration source within an allowed root."
+          },
+          "target": {
+            "type": "string",
+            "minLength": 1,
+            "maxLength": 4096,
+            "description": "Create-only migration target within an allowed root."
+          },
+          "offline": {
+            "type": "boolean",
+            "const": true,
+            "default": true,
+            "description": "This integration permits only the canonical offline execution path."
+          },
+          "apply": {
+            "type": "boolean",
+            "default": false,
+            "description": "Apply an already reviewed plan. Defaults to dry-run."
+          },
+          "planDigest": {
+            "type": "string",
+            "pattern": "^[0-9a-f]{64}$",
+            "description": "Exact digest returned by the matching dry-run plan."
+          }
+        },
+        "required": [
+          "source",
+          "target"
+        ],
+        "allOf": [
+          {
+            "if": {
+              "properties": {
+                "apply": {
+                  "const": true
+                }
+              },
+              "required": [
+                "apply"
+              ]
+            },
+            "then": {
+              "required": [
+                "planDigest"
+              ]
+            }
+          },
+          {
+            "if": {
+              "required": [
+                "planDigest"
+              ]
+            },
+            "then": {
+              "properties": {
+                "apply": {
+                  "const": true
+                }
+              },
+              "required": [
+                "apply"
+              ]
+            }
+          }
+        ],
+        "additionalProperties": false
+      }
     }
   ]
 }

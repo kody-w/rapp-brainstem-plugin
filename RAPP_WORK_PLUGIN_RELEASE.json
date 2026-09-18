@@ -1,0 +1,278 @@
+{
+  "artifactPath": "RAPP_WORK_PLUGIN_RELEASE.json",
+  "authority": {
+    "authoritative": false,
+    "protocol": "RAPP/1",
+    "verificationRequired": true
+  },
+  "contentSha256": "efe054895a79343605f40bc44028bbb613b7e12c99492b44fa841bf2e7af79be",
+  "fileCount": 46,
+  "files": [
+    {
+      "bytes": 84,
+      "path": ".dockerignore",
+      "sha256": "5b45d285a13937f2197d6a4f99f71f5b6103ccd7d76ec1a26d7b86f2f4693e03"
+    },
+    {
+      "bytes": 1452,
+      "path": ".github/workflows/ci.yml",
+      "sha256": "c2141d2388c4114004c3ee5dfbac94e7e978d8711bc4766cba9a5661dfdd666c"
+    },
+    {
+      "bytes": 149,
+      "path": ".gitignore",
+      "sha256": "721727468f8820aed6205bf77c766c7dab23f8ad0966e72823f8f9e6ee1c777c"
+    },
+    {
+      "bytes": 3213,
+      "path": "Dockerfile",
+      "sha256": "e46c17b659b48018e7f0e0190f771eb3e62872e1d282f50bac6f85067618caba"
+    },
+    {
+      "bytes": 1071,
+      "path": "LICENSE",
+      "sha256": "fca150ce338dbcf5a0e3fd0b5446c4674556b1a4432425105b9c01c661cd9a72"
+    },
+    {
+      "bytes": 2070,
+      "path": "PRIVACY.md",
+      "sha256": "c7a99e5ae342e8ad11b655c1ba3328aed295a2f36da529901931c4af954204a8"
+    },
+    {
+      "bytes": 446,
+      "path": "RAPP_WORK_SDK_PIN.json",
+      "sha256": "130506cfcd796a46309b485251bb63dbce2fb475bb0630eef12beada0437a9b8"
+    },
+    {
+      "bytes": 10204,
+      "path": "README.md",
+      "sha256": "0b3546374b2eeb98480ac04ca17d3f5e1e05d793438f2768084277d0acd7527c"
+    },
+    {
+      "bytes": 270,
+      "path": "TERMS.md",
+      "sha256": "0b6ab87835e830d381cc03a0e5a7ae273402ecffd6958faabfaf4a0f6a1d4b76"
+    },
+    {
+      "bytes": 545,
+      "path": "agents/basic_agent.py",
+      "sha256": "987d84e97cb0c4fa02bb069e108ff4e32b97f4a25443c8b72be322023cd1705e"
+    },
+    {
+      "bytes": 684,
+      "path": "agents/hello_agent.py",
+      "sha256": "313adc88da5250048bf7d8240e47046ce248b6ed0490536b9eda9dbf85ce499f"
+    },
+    {
+      "bytes": 1483,
+      "path": "cowork/appPackage/manifest.template.json",
+      "sha256": "3a7c614a21cbfdcac52afaf4a5c42ba80671598224eb4f8daf4c6f0e6ee1d897"
+    },
+    {
+      "bytes": 747,
+      "path": "cowork/appPackage/skills/brainstem/SKILL.md",
+      "sha256": "f5eaeb966c4a203e95aa96ceadb03a63c24f6f2588c4c5637650737f14507513"
+    },
+    {
+      "bytes": 1174,
+      "path": "cowork/appPackage/skills/rapp-work/SKILL.md",
+      "sha256": "3f2c684b1b7ee02f0962f1077855ced6e36a9335fdb3ffcb97e2151485e79065"
+    },
+    {
+      "bytes": 10664,
+      "path": "cowork/appPackage/tools/brainstem-tools.json",
+      "sha256": "219bd6246c165ab7bd62e5d40ed5e6c215ffaf5db0f16cb557bfd6f025160c37"
+    },
+    {
+      "bytes": 856,
+      "path": "hatch_build.py",
+      "sha256": "d6e5786b7dd6d717b2f54113ae6ba743c509e054c1016c32b518c5018976a281"
+    },
+    {
+      "bytes": 10810,
+      "path": "infra/deploy.sh",
+      "sha256": "e2abea1d9127baa0bfeef5910c0cbce1b65984780c90f577dd20f84bace10ebf"
+    },
+    {
+      "bytes": 534,
+      "path": "plugin/.claude-plugin/plugin.json",
+      "sha256": "e0ca97e5c847a3a1593a0c1300661a14fcecf62550ed91a4c7f3f33fde691c44"
+    },
+    {
+      "bytes": 133,
+      "path": "plugin/.mcp.json",
+      "sha256": "1c7ba24350aa9172019505c0c8ef0b75a0c10d079a831c433a4a0f93b8913505"
+    },
+    {
+      "bytes": 747,
+      "path": "plugin/skills/brainstem/SKILL.md",
+      "sha256": "f5eaeb966c4a203e95aa96ceadb03a63c24f6f2588c4c5637650737f14507513"
+    },
+    {
+      "bytes": 1174,
+      "path": "plugin/skills/rapp-work/SKILL.md",
+      "sha256": "3f2c684b1b7ee02f0962f1077855ced6e36a9335fdb3ffcb97e2151485e79065"
+    },
+    {
+      "bytes": 1257,
+      "path": "pyproject.toml",
+      "sha256": "b7ef4819fbcf75ae5b987e96ae9e68ff67150078a6c5f3b04d775cd4f506942d"
+    },
+    {
+      "bytes": 37,
+      "path": "scripts/__init__.py",
+      "sha256": "3cf5450832aef775f7d1ce3f4c49d18e9e7653afca019aaec449d2e0c6d8b204"
+    },
+    {
+      "bytes": 1068,
+      "path": "scripts/build_release_manifest.py",
+      "sha256": "c5608f824239e63aa9262b081d11450809d1744e4bf79b8755f5865b93948556"
+    },
+    {
+      "bytes": 5403,
+      "path": "scripts/github_app_manifest_server.py",
+      "sha256": "7123a3c0e6c542b128507223507e847c66ee63e656d6ff6cfa080f8c06effe12"
+    },
+    {
+      "bytes": 19596,
+      "path": "scripts/package_cowork.py",
+      "sha256": "41154b228f252c18d116db0a17b20aa2d73ad26b8a6e27fe373b3ebafa0fdd90"
+    },
+    {
+      "bytes": 410,
+      "path": "soul.md",
+      "sha256": "1c05913ec84989632ef652e37b46d300e6e79b383f7233041771234a1999a13f"
+    },
+    {
+      "bytes": 60,
+      "path": "src/rapp_brainstem_gateway/__init__.py",
+      "sha256": "5b3b14e5cd49bbb40d237e93e9ca36190aa53afcab22d4bf0efb77f96f81dc57"
+    },
+    {
+      "bytes": 3139,
+      "path": "src/rapp_brainstem_gateway/agents.py",
+      "sha256": "b1a78f15235e973584d4130c823fb3860093d6d920bfde41eb396cf00d8082b0"
+    },
+    {
+      "bytes": 6549,
+      "path": "src/rapp_brainstem_gateway/app.py",
+      "sha256": "c64e33f48f02ca25d6632e5e6e830ba3ef3d87eeadc06ae1bededcbb8df037cd"
+    },
+    {
+      "bytes": 2728,
+      "path": "src/rapp_brainstem_gateway/auth.py",
+      "sha256": "4efbbb1fb4418ba6a60cc388b550c421ea696e4d84b2038e4643ea95d884c621"
+    },
+    {
+      "bytes": 7266,
+      "path": "src/rapp_brainstem_gateway/brainstem.py",
+      "sha256": "8113bb872afad85fb97c17a63fcc3e93bc9d6f44e4eb0b5ef66843157babefa5"
+    },
+    {
+      "bytes": 5893,
+      "path": "src/rapp_brainstem_gateway/config.py",
+      "sha256": "4b93d88320bc89a2e19ec30f3eb29ba1e9f2d6d048bef8060f6fc6c395f43766"
+    },
+    {
+      "bytes": 486,
+      "path": "src/rapp_brainstem_gateway/errors.py",
+      "sha256": "8de16bd7332142fa11e121f2706b35020570c24b3e6bffb13a4e2bcedd2951ae"
+    },
+    {
+      "bytes": 12441,
+      "path": "src/rapp_brainstem_gateway/protocol.py",
+      "sha256": "a931befeac8983dbaceffbccf23668204e540923f15e8a27af2d5ef837cb7fe7"
+    },
+    {
+      "bytes": 33068,
+      "path": "src/rapp_brainstem_gateway/rapp_work.py",
+      "sha256": "ea5744a5e5234a0418214def0eba0f9f3bcc8f9a0261d4d23e4f4e84fa16b5ab"
+    },
+    {
+      "bytes": 735,
+      "path": "tests/conftest.py",
+      "sha256": "20b6a29d868830777219dd402eb3d0bfd616120d674d594218b4a8bcb4302fdb"
+    },
+    {
+      "bytes": 5791,
+      "path": "tests/fake_rapp_work_sdk.py",
+      "sha256": "bad948fdf283e532631211800d957561ad4502b39ca8d0a2ca989c8e6d89a7a5"
+    },
+    {
+      "bytes": 881,
+      "path": "tests/test_agents.py",
+      "sha256": "b33b7a1d3a72b57b513d452e863d8baa17d545d988c713b919eaad165e05c32f"
+    },
+    {
+      "bytes": 8413,
+      "path": "tests/test_app.py",
+      "sha256": "afb65720294352d97f491774e80057b9a24160340a1c6a6a1b25fe30929f4692"
+    },
+    {
+      "bytes": 1547,
+      "path": "tests/test_auth.py",
+      "sha256": "41466999976914b209072825c99fe01d9e67f528b8ebbcd80544254c6d0e4f4e"
+    },
+    {
+      "bytes": 2192,
+      "path": "tests/test_brainstem.py",
+      "sha256": "c6fe5d8f620b21093e577b530a1cdca5da6289aeff0f873a52efa1d2684c0be5"
+    },
+    {
+      "bytes": 3040,
+      "path": "tests/test_config.py",
+      "sha256": "abff32e6a9fa0d97a3091eb4fb16727fd326c55abd86adb197feba13ec21200f"
+    },
+    {
+      "bytes": 808,
+      "path": "tests/test_github_app_manifest.py",
+      "sha256": "2f8c0710a340571df12b9416fe02fe99a2b584a5883642ceaa59f28bc8bd3b6c"
+    },
+    {
+      "bytes": 9044,
+      "path": "tests/test_package.py",
+      "sha256": "29ff13fffe6671816c025dd0439ba92ff7bb63b5ff3d681616eaa68efd36fa7e"
+    },
+    {
+      "bytes": 15567,
+      "path": "tests/test_rapp_work.py",
+      "sha256": "395eb40972eca74e7154af987b705ad34d17e92ed088b8cb2f499672d8e41421"
+    }
+  ],
+  "name": "rapp-brainstem",
+  "outputs": [
+    {
+      "kind": "cowork-zip",
+      "path": "dist/rapp-brainstem-cowork.zip"
+    },
+    {
+      "kind": "python-wheel",
+      "path": "dist/rapp_brainstem_gateway-0.2.0-py3-none-any.whl"
+    },
+    {
+      "kind": "python-sdist",
+      "path": "dist/rapp_brainstem_gateway-0.2.0.tar.gz"
+    }
+  ],
+  "releaseStatus": "final",
+  "schema": "rapp-work-plugin-release/1",
+  "sdk": {
+    "distribution": "rapp-work",
+    "operations": [
+      "status",
+      "verify",
+      "discover",
+      "scaffold",
+      "update",
+      "migrate"
+    ],
+    "profile": "rapp-work-sdk/1",
+    "sourceCommit": "29ead23b21645f8d7682ee00414930ffa9ce0ca6",
+    "sourceCommitStatus": "pinned",
+    "sourceRepository": "https://github.com/kody-w/rapp-work",
+    "version": "1.0.0"
+  },
+  "sourceRepository": "https://github.com/kody-w/rapp-brainstem-plugin",
+  "totalBytes": 195929,
+  "version": "0.2.0"
+}

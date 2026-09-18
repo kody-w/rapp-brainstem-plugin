@@ -21,3 +21,8 @@ class MethodNotFoundError(GatewayError):
 class ToolExecutionError(GatewayError):
     status_code = 422
     code = -32002
+
+
+class RequestDeadlineError(GatewayError):
+    status_code = 504
+    code = -32003
