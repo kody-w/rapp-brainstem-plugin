@@ -23,4 +23,5 @@ def settings(tmp_path: Path) -> Settings:
         request_timeout_seconds=1,
         model="test-model",
         session_secret="test-secret",
+        rapp_work_owner_ids=frozenset({"42", "1001", "1002"}),
     )

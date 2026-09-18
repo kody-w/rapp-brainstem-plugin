@@ -1,7 +1,7 @@
 {
   "$schema": "https://developer.microsoft.com/json-schemas/teams/v1.28/MicrosoftTeams.schema.json",
   "manifestVersion": "1.28",
-  "version": "0.1.0",
+  "version": "0.2.0",
   "id": "a75e8bad-121d-51ec-9269-1b3f2c4cfdee",
   "developer": {
     "name": "RAPP",
@@ -25,6 +25,9 @@
   "agentSkills": [
     {
       "folder": "./skills/brainstem"
+    },
+    {
+      "folder": "./skills/rapp-work"
     }
   ],
   "agentConnectors": [

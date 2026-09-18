@@ -1,7 +1,7 @@
 {
   "name": "rapp-brainstem",
-  "version": "0.1.0",
-  "description": "Use your RAPP Brainstem through your GitHub Copilot account.",
+  "version": "0.2.0",
+  "description": "Use RAPP Brainstem and the canonical RAPP Work SDK through one authenticated gateway.",
   "author": {
     "name": "RAPP",
     "url": "https://github.com/kody-w"
@@ -9,7 +9,7 @@
   "homepage": "https://github.com/kody-w/rapp-brainstem-plugin",
   "repository": "https://github.com/kody-w/rapp-brainstem-plugin.git",
   "license": "MIT",
-  "keywords": ["rapp", "brainstem", "github-copilot", "mcp", "agents"],
+  "keywords": ["rapp", "rapp-work", "brainstem", "github-copilot", "mcp", "agents"],
   "mcpServers": "./.mcp.json",
   "skills": "./skills/"
 }

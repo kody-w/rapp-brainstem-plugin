@@ -16,4 +16,34 @@ jobs:
       - run: pip install -e ".[dev]"
       - run: ruff check .
       - run: pytest
-      - run: python scripts/package_cowork.py --mcp-url https://example.test/mcp --oauth-reference-id test-reference
+      - run: python scripts/build_release_manifest.py --check
+      - run: >-
+          python scripts/package_cowork.py
+          --mcp-url https://example.test/mcp
+          --oauth-reference-id test-reference
+      - run: python -m build
+
+  release:
+    if: github.event_name == 'push' && startsWith(github.ref, 'refs/tags/v')
+    runs-on: ubuntu-latest
+    env:
+      RAPP_RELEASE_BUILD: "1"
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+          cache: pip
+      - run: pip install -e ".[dev]"
+      - run: python scripts/build_release_manifest.py --check
+      - run: >-
+          python scripts/package_cowork.py
+          --mcp-url https://example.test/mcp
+          --oauth-reference-id release-validation
+      - run: python -m build
+      - name: Build pinned production image
+        run: |
+          SDK_COMMIT="$(python -c 'import json; print(json.load(open("RAPP_WORK_SDK_PIN.json"))["sourceCommit"])')"
+          docker build \
+            --build-arg "RAPP_WORK_SOURCE_COMMIT=${SDK_COMMIT}" \
+            --tag rapp-brainstem:release .

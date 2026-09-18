@@ -10,3 +10,4 @@ build/
 .env
 .DS_Store
 copilot-home/
+infra/.containerapp-*.json

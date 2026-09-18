@@ -1,0 +1,18 @@
+{
+  "schema": "rapp-work-sdk-consumer-pin/1",
+  "distribution": "rapp-work",
+  "sdkVersion": "1.0.0",
+  "profile": "rapp-work-sdk/1",
+  "defaultCommand": "python -m rapp_work",
+  "operations": [
+    "status",
+    "verify",
+    "discover",
+    "scaffold",
+    "update",
+    "migrate"
+  ],
+  "sourceRepository": "https://github.com/kody-w/rapp-work",
+  "sourceCommit": "29ead23b21645f8d7682ee00414930ffa9ce0ca6",
+  "sourceCommitStatus": "pinned"
+}
