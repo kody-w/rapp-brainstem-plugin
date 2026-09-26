@@ -1,6 +1,6 @@
 {
   "name": "rapp-brainstem",
-  "version": "0.2.0",
+  "version": "0.2.1",
   "description": "Use RAPP Brainstem and the canonical RAPP Work SDK through one authenticated gateway.",
   "author": {
     "name": "RAPP",

@@ -58,7 +58,7 @@ def test_builds_uploadable_cowork_package(tmp_path):
     connector = manifest["agentConnectors"][0]["toolSource"]["remoteMcpServer"]
     assert connector["mcpServerUrl"] == "https://brainstem.example/mcp"
     assert connector["authorization"]["referenceId"] == "oauth-config-id"
-    assert manifest["version"] == "0.2.0"
+    assert manifest["version"] == "0.2.1"
     assert {skill["folder"] for skill in manifest["agentSkills"]} == {
         "./skills/brainstem",
         "./skills/rapp-work",

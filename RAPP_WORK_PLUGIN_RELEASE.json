@@ -5,7 +5,7 @@
     "protocol": "RAPP/1",
     "verificationRequired": true
   },
-  "contentSha256": "efe054895a79343605f40bc44028bbb613b7e12c99492b44fa841bf2e7af79be",
+  "contentSha256": "2fc5c8ae8d2196b88804e2ef7dbf0ad4e8bf2a9e3bc07a56976c051114fdd9d9",
   "fileCount": 46,
   "files": [
     {
@@ -66,17 +66,17 @@
     {
       "bytes": 1483,
       "path": "cowork/appPackage/manifest.template.json",
-      "sha256": "3a7c614a21cbfdcac52afaf4a5c42ba80671598224eb4f8daf4c6f0e6ee1d897"
+      "sha256": "4cd22931aef88490e0de6a510ca55ffff550fdd527e287906f69f90f07ca597e"
     },
     {
       "bytes": 747,
       "path": "cowork/appPackage/skills/brainstem/SKILL.md",
-      "sha256": "f5eaeb966c4a203e95aa96ceadb03a63c24f6f2588c4c5637650737f14507513"
+      "sha256": "589eef16d643a9606edde2f53eef46036b31939ecfe8dd0c18e4b24e149ce291"
     },
     {
       "bytes": 1174,
       "path": "cowork/appPackage/skills/rapp-work/SKILL.md",
-      "sha256": "3f2c684b1b7ee02f0962f1077855ced6e36a9335fdb3ffcb97e2151485e79065"
+      "sha256": "673332ed7366c1869deba2bb719d8a5a705e8d9f3caac185ec92dfb91383aeac"
     },
     {
       "bytes": 10664,
@@ -96,7 +96,7 @@
     {
       "bytes": 534,
       "path": "plugin/.claude-plugin/plugin.json",
-      "sha256": "e0ca97e5c847a3a1593a0c1300661a14fcecf62550ed91a4c7f3f33fde691c44"
+      "sha256": "dd52ac97598d8409906a426f3bffffed54b8ef02e0ae80edd0776aa3e14b2651"
     },
     {
       "bytes": 133,
@@ -106,17 +106,17 @@
     {
       "bytes": 747,
       "path": "plugin/skills/brainstem/SKILL.md",
-      "sha256": "f5eaeb966c4a203e95aa96ceadb03a63c24f6f2588c4c5637650737f14507513"
+      "sha256": "589eef16d643a9606edde2f53eef46036b31939ecfe8dd0c18e4b24e149ce291"
     },
     {
       "bytes": 1174,
       "path": "plugin/skills/rapp-work/SKILL.md",
-      "sha256": "3f2c684b1b7ee02f0962f1077855ced6e36a9335fdb3ffcb97e2151485e79065"
+      "sha256": "673332ed7366c1869deba2bb719d8a5a705e8d9f3caac185ec92dfb91383aeac"
     },
     {
       "bytes": 1257,
       "path": "pyproject.toml",
-      "sha256": "b7ef4819fbcf75ae5b987e96ae9e68ff67150078a6c5f3b04d775cd4f506942d"
+      "sha256": "78578c4aa4255f36deb66cd9f0196bd11f560de312a512b2812236611565e844"
     },
     {
       "bytes": 37,
@@ -146,12 +146,12 @@
     {
       "bytes": 60,
       "path": "src/rapp_brainstem_gateway/__init__.py",
-      "sha256": "5b3b14e5cd49bbb40d237e93e9ca36190aa53afcab22d4bf0efb77f96f81dc57"
+      "sha256": "3579faf81402d53ce5c8af337e343784bd961e1331f895883f7aaf8b5ee62028"
     },
     {
-      "bytes": 3139,
+      "bytes": 3232,
       "path": "src/rapp_brainstem_gateway/agents.py",
-      "sha256": "b1a78f15235e973584d4130c823fb3860093d6d920bfde41eb396cf00d8082b0"
+      "sha256": "ee10d91ea898d2a5ba38b105d6dd0c2723a6e328ca63f8ccb48b65934bd2ec19"
     },
     {
       "bytes": 6549,
@@ -199,9 +199,9 @@
       "sha256": "bad948fdf283e532631211800d957561ad4502b39ca8d0a2ca989c8e6d89a7a5"
     },
     {
-      "bytes": 881,
+      "bytes": 2261,
       "path": "tests/test_agents.py",
-      "sha256": "b33b7a1d3a72b57b513d452e863d8baa17d545d988c713b919eaad165e05c32f"
+      "sha256": "96b067963083483b1cb550e38a55479bfb2f5605847ccdd2e16407c933880be4"
     },
     {
       "bytes": 8413,
@@ -231,7 +231,7 @@
     {
       "bytes": 9044,
       "path": "tests/test_package.py",
-      "sha256": "29ff13fffe6671816c025dd0439ba92ff7bb63b5ff3d681616eaa68efd36fa7e"
+      "sha256": "71a547cd5e89a955cd9a802b2bb2972a7d2ca645324070af129ec12bc66c5a9d"
     },
     {
       "bytes": 15567,
@@ -247,11 +247,11 @@
     },
     {
       "kind": "python-wheel",
-      "path": "dist/rapp_brainstem_gateway-0.2.0-py3-none-any.whl"
+      "path": "dist/rapp_brainstem_gateway-0.2.1-py3-none-any.whl"
     },
     {
       "kind": "python-sdist",
-      "path": "dist/rapp_brainstem_gateway-0.2.0.tar.gz"
+      "path": "dist/rapp_brainstem_gateway-0.2.1.tar.gz"
     }
   ],
   "releaseStatus": "final",
@@ -273,6 +273,6 @@
     "version": "1.0.0"
   },
   "sourceRepository": "https://github.com/kody-w/rapp-brainstem-plugin",
-  "totalBytes": 195929,
-  "version": "0.2.0"
+  "totalBytes": 197402,
+  "version": "0.2.1"
 }
