@@ -53,7 +53,8 @@ class AgentRegistry:
             sys.modules["agents"] = agents_package
         sys.modules["agents.basic_agent"] = shim
 
-        for path in sorted(self._agents_path.rglob("*_agent.py")):
+        # Only top-level *_agent.py files are live; every subfolder is organization (parked).
+        for path in sorted(self._agents_path.glob("*_agent.py")):
             if path.name == "basic_agent.py" or path.name.startswith("_"):
                 continue
             module = self._load_module(path)
