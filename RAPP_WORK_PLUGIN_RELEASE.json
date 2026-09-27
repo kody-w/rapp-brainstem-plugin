@@ -5,7 +5,7 @@
     "protocol": "RAPP/1",
     "verificationRequired": true
   },
-  "contentSha256": "2fc5c8ae8d2196b88804e2ef7dbf0ad4e8bf2a9e3bc07a56976c051114fdd9d9",
+  "contentSha256": "002b04ec2c841f0088891eabaae7691d8c85fa6992eabf39c8c0a6fc8494121d",
   "fileCount": 46,
   "files": [
     {
@@ -44,9 +44,9 @@
       "sha256": "130506cfcd796a46309b485251bb63dbce2fb475bb0630eef12beada0437a9b8"
     },
     {
-      "bytes": 10204,
+      "bytes": 10578,
       "path": "README.md",
-      "sha256": "0b3546374b2eeb98480ac04ca17d3f5e1e05d793438f2768084277d0acd7527c"
+      "sha256": "b61180413d88f04fd4480799f76593f5862f0315bcf038320eac73f6f4b624ea"
     },
     {
       "bytes": 270,
@@ -273,6 +273,6 @@
     "version": "1.0.0"
   },
   "sourceRepository": "https://github.com/kody-w/rapp-brainstem-plugin",
-  "totalBytes": 197402,
+  "totalBytes": 197776,
   "version": "0.2.1"
 }
