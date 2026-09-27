@@ -1,5 +1,9 @@
 # RAPP Brainstem Plugin
 
+<!-- rapp1:network-header:start -->
+[![RAPP/1](https://kody-w.github.io/rapp-hive-public/portfolio/badges/rapp-brainstem-plugin.svg)](https://github.com/kody-w/rapp-hive-public/blob/main/portfolio/repos/rapp-brainstem-plugin.md) · **New to RAPP?** [Start here: get your Brainstem →](https://github.com/kody-w/rapp-installer#start-here)
+<!-- rapp1:network-header:end -->
+
 Use your RAPP Brainstem through your own GitHub Copilot account in Microsoft
 Copilot Cowork and other Agent Skills hosts.
 
